@@ -42,6 +42,13 @@ async def main():
             payload,
             retain=True,
         )
+        logger.info(f"Publishing availability at {AVAILABILITY_TOPIC=}")
+        await client.publish(
+            AVAILABILITY_TOPIC,
+            "online",
+            qos=1,
+        )
+
 
     async def update():
         while True:
